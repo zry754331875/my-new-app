@@ -30,7 +30,6 @@ class Login extends PureComponent {
         }
         if(isSuccess){
           message.success('登陆成功')
-          
         }
       }
 
