@@ -1,0 +1,4 @@
+export const ON_LOGIN_START = 'ON_LOGIN_START'
+export const ON_LOGIN_SUCCESS = 'ON_LOGIN_SUCCESS'
+export const ON_LOGIN_ERROR = 'ON_LOGIN_ERROR'
+export const ON_LOGIN_CLEAR = 'ON_LOGIN_CLEAR'
