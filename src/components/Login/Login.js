@@ -21,7 +21,7 @@ class Login extends PureComponent {
         const {isLoading,isSuccess,loginError} = this.props
 
         if(isLoading){
-          message.loading('正在登陆中')
+          message.loading('正在登陆')
         }
         if(loginError != null){
           const {message:errorMsg} = loginError
