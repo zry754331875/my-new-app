@@ -4,10 +4,16 @@ import '../../CSS/Login.css'
 import icon from '../../assets/1024.png'
 import { connect } from "react-redux";
 import { onLogin } from "../../Actions/LoginAction";
+import PropTypes from "prop-types";
 
 const FormItem = Form.Item;
 
 class Login extends PureComponent {
+
+  static contextTypes = {
+    history: PropTypes.object,
+  };
+
     handleSubmit = (e) => {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
@@ -25,7 +31,7 @@ class Login extends PureComponent {
         }
         if(loginError != null){
           const {message:errorMsg} = loginError
-
+          
           message.error(errorMsg)
         }
         if(isSuccess){
@@ -49,14 +55,14 @@ class Login extends PureComponent {
               {getFieldDecorator('userName', {
                 rules: [{ required: true, message: '请输入用户名!' }],
               })(
-                <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="用户名" />
+                <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="用户名（admin）" />
               )}
             </FormItem>
             <FormItem>
               {getFieldDecorator('password', {
                 rules: [{ required: true, message: '请输入密码!' }],
               })(
-                <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="密码" />
+                <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="密码（123456）" />
               )}
             </FormItem>
             <FormItem>

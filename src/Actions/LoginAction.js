@@ -1,5 +1,7 @@
 import { createAction } from "redux-actions";
 import * as LoginType from "../Contants/LoginType";
+import { push } from 'connected-react-router'
+
 export function  onLogin(userName,password){
     return async (dispatch,getState)=>{
         dispatch(createAction(LoginType.ON_LOGIN_START)({userName:userName,password:password}))
@@ -10,14 +12,15 @@ export function  onLogin(userName,password){
             setTimeout(()=>{
                 dispatch(createAction(LoginType.ON_LOGIN_SUCCESS)())
                 dispatch(createAction(LoginType.ON_LOGIN_CLEAR)())
-            },5000)
+                dispatch(push('/App'))
+            },2500)
         }
         else
         {
             setTimeout(()=>{
                 dispatch(createAction(LoginType.ON_LOGIN_ERROR)())
                 dispatch(createAction(LoginType.ON_LOGIN_CLEAR)())
-            },5000)
+            },2500)
         }
     }
 }
