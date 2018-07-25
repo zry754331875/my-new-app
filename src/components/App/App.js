@@ -1,12 +1,26 @@
 import React, { Component } from 'react';
 import '../../CSS/App.css';
-import { Layout, Menu, Breadcrumb, Icon, Button } from 'antd';
+import { Layout, Menu, Breadcrumb, Icon, Button,Badge} from 'antd';
 import PropTypes from 'prop-types';
 import icon from '../../assets/1024.png'
+import Main from "./Main";
+import { connect } from "react-redux";
+import { push } from 'connected-react-router'
+import { Route, Switch, Redirect} from 'react-router'
+import EmailList from "../email/EmailList";
+import { Link } from 'react-router-dom'
+import { handleMenuClick } from "../../Actions/AppAction";
+import Login from "../Login/Login";
+
 const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
 
 class App extends Component {
+
+  hanldeMenuClick=(item)=>{
+    this.props.onMenuClick(item)
+  }
+
   render() {
     
     return (
@@ -19,10 +33,15 @@ class App extends Component {
           mode="horizontal"
           defaultSelectedKeys={['1']}
           style={{ lineHeight: '64px' }}
+          onClick={this.hanldeMenuClick}
         >
           <Menu.Item key="1">{this.props.itemOne}</Menu.Item>
           <Menu.Item key="2">通讯录</Menu.Item>
-          <Menu.Item key="3">邮件</Menu.Item>
+          <Menu.Item key="3">
+            邮件
+            <Badge count={this.props.emailBadge} offset={[-25,3]}>
+            </Badge>
+          </Menu.Item>
           <Menu
           className='right'
           theme="dark"
@@ -63,13 +82,12 @@ class App extends Component {
           </Menu>
         </Sider>
         <Layout style={{ padding: '0 24px 24px' }}>
-          <Breadcrumb style={{ margin: '16px 0' }}>
-            <Breadcrumb.Item>Home</Breadcrumb.Item>
-            <Breadcrumb.Item>List</Breadcrumb.Item>
-            <Breadcrumb.Item>App</Breadcrumb.Item>
-          </Breadcrumb>
-          <Content style={{ background: '#fff', padding: 24, margin: 0, minHeight: 800 }}>
-            Content
+          <Content style={{ background: '#fff', padding: 24, margin: 0, minHeight: 1000 }}>
+          <Switch>
+            <Route path="/Main" component={Main}/>
+            <Route path="/EmailList" component={EmailList}/>
+            <Route path="/Login" component={Login}/>
+          </Switch>
           </Content>
         </Layout>
       </Layout>
@@ -89,4 +107,17 @@ App.defaultProps = {
   itemOne: '首页'
 };
 
-export default App;
+const mapStateToProps = (state) =>{
+  return {
+    emailBadge:state.App.emailBadge,
+  }
+}
+
+const mapDispatchToProps = (dispatch) =>{
+  return {
+    onMenuClick:(item)=>{
+      dispatch(handleMenuClick(item))
+    },
+  }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(App);

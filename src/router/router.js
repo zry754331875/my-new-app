@@ -2,14 +2,11 @@ import React from 'react';
 import { Route, Switch } from 'react-router'
 import Login from "../components/Login/Login"
 import App from "../components/App/App";
+import EmailList from "../components/email/EmailList"
+import Main from "../components/App/Main";
 
 const rootRouter = (
-    <div>
-      <Switch>
-        <Route exact path="/" component={Login}/>
-        <Route path="/App" component={App}/>
-      </Switch>
-    </div>
+    <App></App>
 )
 
 export default rootRouter
