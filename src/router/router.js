@@ -6,7 +6,13 @@ import EmailList from "../components/email/EmailList"
 import Main from "../components/App/Main";
 
 const rootRouter = (
-    <App></App>
+    <div>
+      <Switch>
+        <Route exact path="/" component={Login}/>
+        <Route path="/App" component={App} />
+        <Route component={Login}/>
+      </Switch>
+    </div>
 )
 
 export default rootRouter

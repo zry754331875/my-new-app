@@ -9,16 +9,25 @@ import { push } from 'connected-react-router'
 import { Route, Switch, Redirect} from 'react-router'
 import EmailList from "../email/EmailList";
 import { Link } from 'react-router-dom'
-import { handleMenuClick } from "../../Actions/AppAction";
-import Login from "../Login/Login";
+import { handleMenuClick,onSliderMenuClick } from "../../Actions/AppAction";
+import Contact from "../Contact/Contact";
 
 const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
 
+const EmailFolders = ['INBOX',]
 class App extends Component {
 
   hanldeMenuClick=(item)=>{
     this.props.onMenuClick(item)
+  }
+
+  handleSliderMenuClick=(item)=>{
+    this.props.onSliderMenuClick(item)
+  }
+
+  componentWillMount(){
+    this.hanldeMenuClick({key:1})
   }
 
   render() {
@@ -31,9 +40,9 @@ class App extends Component {
         <Menu
           theme="dark"
           mode="horizontal"
-          defaultSelectedKeys={['1']}
           style={{ lineHeight: '64px' }}
           onClick={this.hanldeMenuClick}
+          selectable={false}
         >
           <Menu.Item key="1">{this.props.itemOne}</Menu.Item>
           <Menu.Item key="2">通讯录</Menu.Item>
@@ -57,36 +66,29 @@ class App extends Component {
         <Sider width={200} style={{ background: '#fff'}}>
           <Menu
             mode={'inline'}
-            defaultSelectedKeys={['1']}
-            defaultOpenKeys={['sub1']}
+            // defaultSelectedKeys={['1']}
+            // defaultOpenKeys={['sub1']}
             style={{ height: '100%', borderRight: 0 }}
+            onClick={this.handleSliderMenuClick}
           >
-            <SubMenu key="sub1" title={<span><Icon type="user" />subnav 1</span>}>
-              <Menu.Item key="1">option1</Menu.Item>
-              <Menu.Item key="2">option2</Menu.Item>
-              <Menu.Item key="3">option3</Menu.Item>
-              <Menu.Item key="4">option4</Menu.Item>
+            <SubMenu key="sub1" title={<span><Icon type="user" />邮件</span>}>
+              <Menu.Item key="1">收件箱</Menu.Item>
+              <Menu.Item key="2">发件箱</Menu.Item>
+              <Menu.Item key="3">草稿箱</Menu.Item>
+              <Menu.Item key="4">已删除</Menu.Item>
             </SubMenu>
-            <SubMenu key="sub2" title={<span><Icon type="laptop" />subnav 2</span>}>
-              <Menu.Item key="5">option5</Menu.Item>
-              <Menu.Item key="6">option6</Menu.Item>
-              <Menu.Item key="7">option7</Menu.Item>
-              <Menu.Item key="8">option8</Menu.Item>
-            </SubMenu>
-            <SubMenu key="sub3" title={<span><Icon type="notification" />subnav 3</span>}>
-              <Menu.Item key="9">option9</Menu.Item>
-              <Menu.Item key="10">option10</Menu.Item>
-              <Menu.Item key="11">option11</Menu.Item>
-              <Menu.Item key="12">option12</Menu.Item>
+            <SubMenu key="sub2" title={<span><Icon type="laptop" />通讯录</span>}>
+              <Menu.Item key="5">干部通讯录</Menu.Item>
+              <Menu.Item key="6">普通通讯录</Menu.Item>
             </SubMenu>
           </Menu>
         </Sider>
         <Layout style={{ padding: '0 24px 24px' }}>
           <Content style={{ background: '#fff', padding: 24, margin: 0, minHeight: 1000 }}>
           <Switch>
-            <Route path="/Main" component={Main}/>
-            <Route path="/EmailList" component={EmailList}/>
-            <Route path="/Login" component={Login}/>
+            <Route path="/App/Main" component={Main}/>
+            <Route path="/App/EmailList/:folder" component={EmailList}/>
+            <Route path="/App/Contact" component={Contact}/>
           </Switch>
           </Content>
         </Layout>
@@ -118,6 +120,9 @@ const mapDispatchToProps = (dispatch) =>{
     onMenuClick:(item)=>{
       dispatch(handleMenuClick(item))
     },
+    onSliderMenuClick:(item)=>{
+      dispatch(onSliderMenuClick(item))
+    }
   }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(App);

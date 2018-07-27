@@ -1,5 +1,6 @@
 import { handleActions } from "redux-actions";
 import * as LoginType from "../Contants/LoginType";
+import * as AppType from "../Contants/AppType";
 
 const defaultState = {
     userName:'',
@@ -48,6 +49,19 @@ export default handleActions({
             isSuccess:false,
             isLoading:false,
             loginError:null,
+        }
+    },
+    [AppType.LOGIN_OUT]:(state)=>{
+        return {
+            ...state,
+            userName:'',
+            password:'',
+            remember:false,
+            loginError:null,
+            isSuccess:false,
+            isLoading:false,
+            shouldShowError:false,
+            shouldShowSuccess:false,
         }
     }
 },defaultState)
