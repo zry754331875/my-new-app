@@ -1,6 +1,6 @@
 import { handleActions } from "redux-actions";
 import * as EmailTypes from "../Contants/EmailTypes";
-import { onPageSizeChange } from "../Actions/EmailListActions";
+
 
 const defaultState = {
     data: [],
@@ -15,10 +15,6 @@ const defaultState = {
     loading: false,
     Error:null,
 }
-
-// function onShowPageSizeChange(current,pageSize){
-//     dispatch(onPageSizeChange(current,pageSize))
-// }
 
 export default handleActions ({
     [EmailTypes.EMAIL_LIST_FETCH_START]:(state,action)=>{

@@ -8,6 +8,7 @@ import { connect } from "react-redux";
 import { push } from 'connected-react-router'
 import { Route, Switch, Redirect} from 'react-router'
 import EmailList from "../email/EmailList";
+import EmailInfo from "../email/EmailInfo";
 import { Link } from 'react-router-dom'
 import { handleMenuClick,onSliderMenuClick } from "../../Actions/AppAction";
 import Contact from "../Contact/Contact";
@@ -89,6 +90,7 @@ class App extends Component {
             <Route path="/App/Main" component={Main}/>
             <Route path="/App/EmailList/:folder" component={EmailList}/>
             <Route path="/App/Contact" component={Contact}/>
+            <Route path='/App/EmailInfo' component={EmailInfo}></Route>
           </Switch>
           </Content>
         </Layout>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { Table, Icon, Divider } from 'antd';
-import { getList,onPageSizeChange } from "../../Actions/EmailListActions";
+import { getList,rowClick } from "../../Actions/EmailListActions";
 
 var FOLDER = ''
 
@@ -73,6 +73,14 @@ class EmailList extends Component {
     this.props.getList(folder,pagination)
   }
 
+  onRowClick = (record)=>{
+    return {
+      onClick:()=>{
+        this.props.rowClick(record)
+      }
+    }
+  }
+
   render() {
     
     const {data,pagination,loading} = this.props
@@ -85,6 +93,7 @@ class EmailList extends Component {
         pagination={pagination}
         loading={loading}
         onChange={this.handleTableChange}
+        onRow={this.onRowClick}
       />
     )
   }
@@ -102,6 +111,9 @@ const mapDispatchToProps = (dispatch)=>{
   return {
     getList:(folder,pagination)=>{
       dispatch(getList(folder,pagination))
+    },
+    rowClick:(record)=>{
+      dispatch(rowClick(record))
     },
   }
 }

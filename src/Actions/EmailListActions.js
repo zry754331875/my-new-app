@@ -1,5 +1,6 @@
 import { createAction } from "redux-actions";
 import * as EmailTypes from "../Contants/EmailTypes";
+import { push } from "connected-react-router";
 
 export function getList(folder,pagination){
     return async (dispatch,getState)=>{
@@ -39,8 +40,9 @@ export function getList(folder,pagination){
     } 
 }
 
-export function onPageSizeChange(current,pageSize){
+export function rowClick(record){
     return dispatch=>{
-        dispatch(createAction(EmailTypes.EMAIL_LIST_PAGESIZE_CHANGE)(pageSize))
+        dispatch(push('/App/EmailInfo'))
+        dispatch(createAction(EmailTypes.EMAIL_LIST_ROW_CLICK)(record))
     }
 }
