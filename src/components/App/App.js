@@ -17,6 +17,23 @@ const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
 
 const EmailFolders = ['INBOX',]
+
+const breadcrumbNameMap = {
+  '/App':'首页',
+  '/App/Main': '',
+  '/App/Contact': '通讯录',
+  '/App/EmailInfo': '邮件详情',
+  '/App/EmailList':'邮箱',
+  '/App/EmailList/INBOX': '收件箱',
+  '/App/EmailList/Sent': '发件箱',
+  '/App/EmailList/Drafts': '草稿箱',
+  '/App/EmailList/Trash': '已删除',
+  '/App/EmailList/INBOX/EmailInfo': '邮箱详情',
+  '/App/EmailList/Sent/EmailInfo': '邮箱详情',
+  '/App/EmailList/Drafts/EmailInfo': '邮箱详情',
+  '/App/EmailList/Trash/EmailInfo': '邮箱详情',
+};
+
 class App extends Component {
 
   hanldeMenuClick=(item)=>{
@@ -33,6 +50,21 @@ class App extends Component {
 
   render() {
     
+    const { location } = this.props;
+    const pathSnippets = location.pathname.split('/').filter(i => i);
+    const extraBreadcrumbItems = pathSnippets.map((_, index) => {
+      
+      const url = `/${pathSnippets.slice(0, index + 1).join('/')}`;
+      
+      return (
+        <Breadcrumb.Item key={url}>
+          <Link to={url}>
+            {breadcrumbNameMap[url]}
+          </Link>
+        </Breadcrumb.Item>
+      );
+    });
+
     return (
     <Layout>
       <Header className="header">
@@ -86,11 +118,14 @@ class App extends Component {
         </Sider>
         <Layout style={{ padding: '0 24px 24px' }}>
           <Content style={{ background: '#fff', padding: 24, margin: 0, minHeight: 1000 }}>
+          <Breadcrumb style={{marginBottom:20}}>
+            {extraBreadcrumbItems}
+          </Breadcrumb>
           <Switch>
             <Route path="/App/Main" component={Main}/>
-            <Route path="/App/EmailList/:folder" component={EmailList}/>
+            <Route exact path="/App/EmailList/:folder" component={EmailList}/>
             <Route path="/App/Contact" component={Contact}/>
-            <Route path='/App/EmailInfo' component={EmailInfo}></Route>
+            <Route path='/App/EmailList/:folder/EmailInfo' component={EmailInfo}></Route>
           </Switch>
           </Content>
         </Layout>

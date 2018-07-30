@@ -76,7 +76,9 @@ class EmailList extends Component {
   onRowClick = (record)=>{
     return {
       onClick:()=>{
-        this.props.rowClick(record)
+        const {folder} = this.props.match.params
+
+        this.props.rowClick(record,folder)
       }
     }
   }
@@ -112,8 +114,8 @@ const mapDispatchToProps = (dispatch)=>{
     getList:(folder,pagination)=>{
       dispatch(getList(folder,pagination))
     },
-    rowClick:(record)=>{
-      dispatch(rowClick(record))
+    rowClick:(record,folder)=>{
+      dispatch(rowClick(record,folder))
     },
   }
 }

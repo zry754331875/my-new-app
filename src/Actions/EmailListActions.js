@@ -40,9 +40,8 @@ export function getList(folder,pagination){
     } 
 }
 
-export function rowClick(record){
+export function rowClick(record,folder){
     return dispatch=>{
-        dispatch(push('/App/EmailInfo'))
-        dispatch(createAction(EmailTypes.EMAIL_LIST_ROW_CLICK)(record))
+        dispatch(push(`/App/EmailList/${folder}/EmailInfo`))
     }
 }
