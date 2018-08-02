@@ -1,0 +1,8 @@
+@import '~antd/dist/antd.css';
+.EmailInfo_Spin {
+    text-align: center;
+}
+
+.EmailInfo_Content {
+    margin-top: 30px;
+}

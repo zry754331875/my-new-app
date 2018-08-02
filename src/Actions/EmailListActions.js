@@ -42,6 +42,9 @@ export function getList(folder,pagination){
 
 export function rowClick(record,folder){
     return dispatch=>{
-        dispatch(push(`/App/EmailList/${folder}/EmailInfo`))
+        
+        const {id} = record
+
+        dispatch(push(`/App/EmailList/${folder}/EmailInfo`,{id,folder}))
     }
 }

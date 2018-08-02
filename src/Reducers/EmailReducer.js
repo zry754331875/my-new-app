@@ -1,9 +1,10 @@
-import { handleActions } from "redux-actions";
+import { handleActions,combineActions } from "redux-actions";
 import * as EmailTypes from "../Contants/EmailTypes";
 
 
 const defaultState = {
     data: [],
+    info:null,
     pagination: {
         'pageSize':10,
         'current':1,
@@ -14,10 +15,11 @@ const defaultState = {
     },
     loading: false,
     Error:null,
+
 }
 
 export default handleActions ({
-    [EmailTypes.EMAIL_LIST_FETCH_START]:(state,action)=>{
+    [combineActions(EmailTypes.EMAIL_LIST_FETCH_START,EmailTypes.EMAIL_INFO_FETCH_START)]:(state,action)=>{
 
         return {
             ...state,
@@ -39,7 +41,17 @@ export default handleActions ({
             }
         }
     },
-    [EmailTypes.EMAIL_LIST_FETCH_ERROR]:(state,action)=>{
+    [EmailTypes.EMAIL_INFO_FETCH_SUCCESS]:(state,action)=>{
+
+        let data = action.payload
+
+        return {
+            ...state,
+            info:data,
+            loading:false,
+        }
+    },
+    [combineActions(EmailTypes.EMAIL_LIST_FETCH_ERROR,EmailTypes.EMAIL_INFO_FETCH_ERROR)]:(state,action)=>{
 
         let error = action.payload
 
