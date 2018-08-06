@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import '../../CSS/App.css';
 import { Layout, Menu, Breadcrumb, Icon, Button,Badge} from 'antd';
 import PropTypes from 'prop-types';
@@ -34,7 +34,7 @@ const breadcrumbNameMap = {
   '/App/EmailList/Trash/EmailInfo': '邮箱详情',
 };
 
-class App extends Component {
+class App extends PureComponent {
 
   hanldeMenuClick=(item)=>{
     this.props.onMenuClick(item)

@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 import { getEmailInfo } from "../../Actions/EmailInfoAction";
 import { Spin,  } from 'antd';
 import "../../CSS/EmailInfo.css";
 
-class EmailInfo extends Component {
+class EmailInfo extends PureComponent {
     
     componentDidMount(){
 
@@ -32,7 +32,7 @@ class EmailInfo extends Component {
 
                 var {fileName,size} = value
 
-                attachmentsViews.push(<div key={`${index}`}><a href='http://192.168.1.28:8080/innovate-api/v1/mail/getAttachments?account=A012D78B-3387-4737-BB71-8599D13AF7BA&folder=INBOX&msgID=55&index=1' download="fileName">{`${fileName}`}</a><br/></div>)
+                attachmentsViews.push(<div key={`${index}`}><a href='http://192.168.1.28:8080/innovate-api/v1/mail/getAttachments?account=A012D78B-3387-4737-BB71-8599D13AF7BA&folder=INBOX&msgID=55&index=1' download="fileName">{`${fileName}-(${size}KB)`}</a><br/></div>)
             })
         }
 

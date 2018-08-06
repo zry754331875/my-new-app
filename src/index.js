@@ -9,6 +9,17 @@ import router from "./router/router";
 import { LocaleProvider } from 'antd';
 import zh_CN from 'antd/lib/locale-provider/zh_CN';
 
+const ISDEBU=true
+ISDEBU || (()=>{
+    window.console={
+        info: () => {},
+        log: () => {},
+        warn: () => {},
+        debug: () => {},
+        error: () => {},
+    };
+})()
+
 ReactDOM.render(
     <Provider store={store}>
     <ConnectedRouter history={history}> 
@@ -18,3 +29,4 @@ ReactDOM.render(
     </ConnectedRouter>
   </Provider>, document.getElementById('root'));
 registerServiceWorker();
+

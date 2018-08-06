@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from "react-redux";
 import { Table, Icon, Divider } from 'antd';
 import { getList,rowClick } from "../../Actions/EmailListActions";
@@ -35,7 +35,7 @@ const columns = [{
   align:'right',
 }];
 
-class EmailList extends Component {
+class EmailList extends PureComponent {
 
   componentDidMount(){
     const {folder} = this.props.match.params
@@ -88,7 +88,7 @@ class EmailList extends Component {
     const {data,pagination,loading} = this.props
 
     return (
-      <Table
+      <Table style={this.props.style}
         columns={columns}
         rowKey={record => record.id}
         dataSource={data}
