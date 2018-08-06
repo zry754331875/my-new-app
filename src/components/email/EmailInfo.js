@@ -15,7 +15,7 @@ class EmailInfo extends PureComponent {
             this.props.getEmailInfo(id,folder)
         }
     }
-
+123212131
     render() {
 
         const {loading,info} = this.props
