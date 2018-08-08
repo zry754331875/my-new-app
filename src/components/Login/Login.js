@@ -46,6 +46,7 @@ class Login extends PureComponent {
       render() {
         const { getFieldDecorator } = this.props.form;
         return (
+          
           <div>
           <div style={{marginTop: 100,marginBottom: 50}}>
           <img className="login-icon" src={icon} alt={'icon'}></img>
