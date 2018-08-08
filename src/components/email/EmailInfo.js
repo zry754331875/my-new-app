@@ -25,7 +25,7 @@ class EmailInfo extends PureComponent {
         if(info)
         {
             var {subject,textContent,sentDate,attachments} = info
-
+            
             var attachmentsViews = []
 
             attachments.map((value,index)=>{
@@ -66,5 +66,6 @@ const mapDispatchToProps = (dispatch)=>{
         }
     }
 }
+
 
 export default connect(mapStateToProps,mapDispatchToProps)(EmailInfo);
