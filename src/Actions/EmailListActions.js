@@ -45,6 +45,8 @@ export function rowClick(record,folder){
         
         const {id} = record
 
-        dispatch(push(`/App/EmailList/${folder}/EmailInfo`,{id,folder}))
+        dispatch(push(`/App/EmailList/${folder}/EmailInfo`))
+        dispatch(createAction(EmailTypes.EMAIL_INFO_CHANGE)({id,folder}))
+        
     }
 }

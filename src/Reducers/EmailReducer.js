@@ -15,7 +15,8 @@ const defaultState = {
     },
     loading: false,
     Error:null,
-
+    emailID:null,
+    folder:null,
 }
 
 export default handleActions ({
@@ -70,6 +71,16 @@ export default handleActions ({
                 ...state.pagination,
                 pageSize:pageSize
             }
+        }
+    },
+    [EmailTypes.EMAIL_INFO_CHANGE]:(state,action)=>{
+
+        let {id,folder} = action.payload
+
+        return {
+            ...state,
+            emailID:id,
+            folder:folder,
         }
     }
 },defaultState)

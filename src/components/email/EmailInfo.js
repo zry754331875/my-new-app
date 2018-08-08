@@ -9,7 +9,7 @@ class EmailInfo extends PureComponent {
     
     componentDidMount(){
 
-        const {id,folder} = this.props.location.state
+        const {id,folder} = this.props
         
         if(id && folder){
             this.props.getEmailInfo(id,folder)
@@ -54,6 +54,8 @@ const mapStateToProps = (state) =>{
     return {
         loading:state.Email.loading,
         info:state.Email.info,
+        id:state.Email.emailID,
+        folder:state.Email.folder,
     }
   }
 
