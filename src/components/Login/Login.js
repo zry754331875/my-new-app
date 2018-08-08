@@ -44,6 +44,7 @@ class Login extends PureComponent {
       }
       
       render() {
+        console.log('这是HashHistory')
         const { getFieldDecorator } = this.props.form;
         return (
           
