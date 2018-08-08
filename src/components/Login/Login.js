@@ -44,8 +44,10 @@ class Login extends PureComponent {
       }
       
       render() {
+
         const { getFieldDecorator } = this.props.form;
         return (
+          <alert>这是browerHistory</alert>
           <div>
           <div style={{marginTop: 100,marginBottom: 50}}>
           <img className="login-icon" src={icon} alt={'icon'}></img>

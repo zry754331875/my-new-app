@@ -19,7 +19,7 @@ class EmailInfo extends PureComponent {
     render() {
 
         const {loading,info} = this.props
-
+        
         console.log(info)
 
         if(info)

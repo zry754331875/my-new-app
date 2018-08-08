@@ -45,6 +45,6 @@ export function rowClick(record,folder){
         
         const {id} = record
 
-        dispatch(push(`/App/EmailList/${folder}/EmailInfo`,{id,folder}))
+        dispatch(push(`/ygoa/App/EmailList/${folder}/EmailInfo`,{id,folder}))
     }
 }

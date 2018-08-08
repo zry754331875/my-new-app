@@ -9,15 +9,15 @@ export function handleMenuClick(item){
         
         if(key == '1')
         {
-            dispatch(push('/App/Main'))
+            dispatch(push('/ygoa/App/Main'))
         }
         else if(key == '2')
         {
-            dispatch(push('/App/Contact'))
+            dispatch(push('/ygoa/App/Contact'))
         }
         else if(key == '3')
         {
-            dispatch(push('/App/EmailList/INBOX'))
+            dispatch(push('/ygoa/App/EmailList/INBOX'))
         }
         else if(key == '4')
         {
@@ -33,16 +33,16 @@ export function onSliderMenuClick(item){
 
         switch (key) {
             case '1':
-                dispatch(push('/App/EmailList/INBOX'))
+                dispatch(push('/ygoa/App/EmailList/INBOX'))
                 break;
             case '2':
-                dispatch(push('/App/EmailList/Sent'))
+                dispatch(push('/ygoa/App/EmailList/Sent'))
                 break;
             case '3':
-                dispatch(push('/App/EmailList/Drafts'))
+                dispatch(push('/ygoa/App/EmailList/Drafts'))
                 break;
             case '4':
-                dispatch(push('/App/EmailList/Trash'))
+                dispatch(push('/ygoa/App/EmailList/Trash'))
                 break;
             case '5':
                 

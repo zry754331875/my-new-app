@@ -8,8 +8,8 @@ import Main from "../components/App/Main";
 const rootRouter = (
     <div>
       <Switch>
-        <Route exact path="/" component={Login}/>
-        <Route path="/App" component={App} />
+        <Route exact path="/ygoa" component={Login}/>
+        <Route path="/ygoa/App" component={App} />
         <Route component={Login}/>
       </Switch>
     </div>

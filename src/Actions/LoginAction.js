@@ -12,7 +12,7 @@ export function  onLogin(userName,password){
             setTimeout(()=>{
                 dispatch(createAction(LoginType.ON_LOGIN_SUCCESS)())
                 dispatch(createAction(LoginType.ON_LOGIN_CLEAR)())
-                dispatch(push('/App'))
+                dispatch(push('/ygoa/App'))
             },2500)
         }
         else
