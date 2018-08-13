@@ -15,7 +15,8 @@ export function getList(folder,pagination){
             headers:{
                 'X-Innovate-Rsbm':'4CEE735A-E182-4D8A-85C8-90B3774AFF2F',
                 'X-Innovate-Application':'OA'
-            }
+            },
+            credentials:'include',
         })
 
         let json = await response.json()

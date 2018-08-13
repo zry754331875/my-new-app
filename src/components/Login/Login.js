@@ -23,9 +23,9 @@ class Login extends PureComponent {
       }
       
       handleLoginState=()=>{
-
+        
         const {isLoading,isSuccess,loginError} = this.props
-
+        
         if(isLoading){
           message.loading('正在登陆中')
         }
@@ -49,6 +49,7 @@ class Login extends PureComponent {
         return (
           
           <div>
+          
           <div style={{marginTop: 100,marginBottom: 50}}>
           <img className="login-icon" src={icon} alt={'icon'}></img>
           </div>
