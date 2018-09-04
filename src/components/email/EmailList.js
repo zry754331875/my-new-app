@@ -43,7 +43,9 @@ class EmailList extends PureComponent {
     let pagination = this.props.pagination
 
     this.props.getList(folder,pagination)
+    
   }
+  
 
   getSnapshotBeforeUpdate(prevProps, prevState) {
     
@@ -77,7 +79,7 @@ class EmailList extends PureComponent {
     return {
       onClick:()=>{
         const {folder} = this.props.match.params
-
+        
         this.props.rowClick(record,folder)
       }
     }
@@ -86,9 +88,12 @@ class EmailList extends PureComponent {
   render() {
     
     const {data,pagination,loading} = this.props
+    
 
     return (
-      <Table style={this.props.style}
+      <Table 
+        ref={t=>this.table=t}
+        style={this.props.style}
         columns={columns}
         rowKey={record => record.id}
         dataSource={data}

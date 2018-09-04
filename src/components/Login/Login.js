@@ -5,17 +5,29 @@ import icon from '../../assets/1024.png'
 import { connect } from "react-redux";
 import { onLogin } from "../../Actions/LoginAction";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 const FormItem = Form.Item;
 
 class Login extends PureComponent {
 
+  constructor(props) {
+    super(props)
+  
+    this.state = {
+       object:{text:'123'}
+    };
+  };
+  
   static contextTypes = {
-    history: PropTypes.object,
+    store: PropTypes.object,
   };
 
     handleSubmit = (e) => {
         e.preventDefault();
+        
+        // const {clientHeight} = this.refDiv
+        
         this.props.form.validateFields((err, values) => {
 
           this.props.onSubmit(err,values)
@@ -46,10 +58,22 @@ class Login extends PureComponent {
       render() {
         console.log('这是HashHistory')
         const { getFieldDecorator } = this.props.form;
+        
         return (
           
-          <div>
-          
+          <div style={{...this.props.style}}>
+          <div className='father'>
+          <div className='children' onClick={()=>{
+            let object = this.state.object;
+
+            object.text = '456'
+
+            this.setState({
+              object:{text:'456'}
+            })
+          }}>{this.state.object.text}</div>
+          </div>
+          <Link to={"/App"} target="_blank">跳转</Link>
           <div style={{marginTop: 100,marginBottom: 50}}>
           <img className="login-icon" src={icon} alt={'icon'}></img>
           </div>

@@ -32,8 +32,8 @@
     "webpack-hot-middleware": "^2.22.3"
   },
   "proxy": {
-    "/zhyl":{
-      "target":"http://zhyl.yong-gang.com",
+    "/ygoa":{
+      "target":"http://ygoa.yong-gang.cn",
       "changeOrigin":true
     }
   }

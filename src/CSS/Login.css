@@ -1,5 +1,4 @@
 @import '~antd/dist/antd.css';
-
 .login-form {
     max-width: 300px;
     margin: auto;
@@ -13,7 +12,37 @@
     border-radius: 5px;
     margin: auto;
     display: block;
+    cursor: wait;
 }
+
+.login-ani {
+    /* margin: auto; */
+    width: 10vw;
+    height: 10vw;
+    position: relative;
+    background-color: aqua;
+    animation: mymove 10s linear	infinite;
+    /* -webkit-animation: mymove 5s infinite; */
+}
+
+.father{
+    background-color: aqua;
+    width: 500px;
+    position: relative;
+    top: 20px;
+}
+
+.children{
+    position: relative;
+    background-color: red;
+    width: 10vw;
+    height: 100px;
+    top: 100px;
+}
+
+/* .children::before {
+    content: '123';
+} */
 .login-form-forgot {
     float: right;
 }
@@ -21,6 +50,32 @@
 .login-form-register {
     float: right;
 }
+
 .login-form-button {
     width: 100%;
+}
+
+@keyframes mymove {
+    0% {
+        transform: rotate(0deg);
+    }
+    
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes mymove {
+    0% {
+        top: 0px;
+    }
+    25% {
+        top: 200px;
+    }
+    75% {
+        top: 50px
+    }
+    100% {
+        top: 100px;
+    }
 }

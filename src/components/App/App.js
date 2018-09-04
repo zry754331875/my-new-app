@@ -6,10 +6,10 @@ import icon from '../../assets/1024.png'
 import Main from "./Main";
 import { connect } from "react-redux";
 import { push } from 'connected-react-router'
-import { Route, Switch, Redirect} from 'react-router'
+import { Route, Switch} from 'react-router'
 import EmailList from "../email/EmailList";
 import EmailInfo from "../email/EmailInfo";
-import { Link } from 'react-router-dom'
+import { Link ,Redirect} from 'react-router-dom'
 import { handleMenuClick,onSliderMenuClick } from "../../Actions/AppAction";
 import Contact from "../Contact/Contact";
 
@@ -34,8 +34,30 @@ const breadcrumbNameMap = {
   '/App/EmailList/Trash/EmailInfo': '邮箱详情',
 };
 
+const PrivateRoute = ({ component: Component, ...rest }) => (
+  <Route
+    {...rest}
+    render={props =>
+      true ? (
+        <Component {...props} />
+      ) : (
+        <Redirect
+          to={{
+            pathname: "/",
+            state: { from: props.location }
+          }}
+        />
+      )
+    }
+  />
+);
+
 class App extends PureComponent {
 
+  static contextTypes = {
+    store: PropTypes.object,
+  };
+  
   hanldeMenuClick=(item)=>{
     this.props.onMenuClick(item)
   }
@@ -45,6 +67,7 @@ class App extends PureComponent {
   }
 
   componentWillMount(){
+    
     this.hanldeMenuClick({key:1})
   }
 
@@ -122,7 +145,7 @@ class App extends PureComponent {
             {extraBreadcrumbItems}
           </Breadcrumb>
           <Switch>
-            <Route path="/App/Main" component={Main}/>
+            <PrivateRoute path='/App/Main' component={Main}></PrivateRoute>
             <Route exact path="/App/EmailList/:folder" component={EmailList}/>
             <Route path="/App/Contact" component={Contact}/>
             <Route path='/App/EmailList/:folder/EmailInfo' component={EmailInfo}></Route>
