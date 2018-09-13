@@ -1,5 +1,6 @@
 import { createAction } from "redux-actions";
 import * as EmailTypes from "../Contants/EmailTypes";
+import { domainToASCII } from "url";
 
 export function getEmailInfo(id,folder){
     return async dispatch=>{
@@ -30,3 +31,11 @@ export function getEmailInfo(id,folder){
     }
 }
 
+ 
+function aa() {
+    
+}
+
+function bb() {
+    
+}

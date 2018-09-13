@@ -13,6 +13,7 @@
     "react-scripts": "1.1.4",
     "redux": "^4.0.0",
     "redux-actions": "^2.4.0",
+    "redux-saga": "^0.16.0",
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
@@ -32,9 +33,9 @@
     "webpack-hot-middleware": "^2.22.3"
   },
   "proxy": {
-    "/ygoa":{
-      "target":"http://ygoa.yong-gang.cn",
-      "changeOrigin":true
+    "/ygoa": {
+      "target": "http://ygoa.yong-gang.cn",
+      "changeOrigin": true
     }
   }
 }

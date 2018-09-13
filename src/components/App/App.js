@@ -34,11 +34,11 @@ const breadcrumbNameMap = {
   '/App/EmailList/Trash/EmailInfo': '邮箱详情',
 };
 
-const PrivateRoute = ({ component: Component, ...rest }) => (
+const PrivateRoute = ({ component: Component, isPublic=false,...rest }) => (
   <Route
     {...rest}
     render={props =>
-      true ? (
+      isPublic ? (
         <Component {...props} />
       ) : (
         <Redirect
@@ -51,6 +51,19 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
     }
   />
 );
+
+function promiseTest(){
+  return new Promise((resolve,reject)=>{
+    let success = true
+
+    if(success){
+      resolve()
+    }
+    else{
+      reject()
+    }
+  })
+}
 
 class App extends PureComponent {
 
@@ -145,7 +158,7 @@ class App extends PureComponent {
             {extraBreadcrumbItems}
           </Breadcrumb>
           <Switch>
-            <PrivateRoute path='/App/Main' component={Main}></PrivateRoute>
+            <PrivateRoute path='/App/Main' component={Main} isPublic={true}></PrivateRoute>
             <Route exact path="/App/EmailList/:folder" component={EmailList}/>
             <Route path="/App/Contact" component={Contact}/>
             <Route path='/App/EmailList/:folder/EmailInfo' component={EmailInfo}></Route>

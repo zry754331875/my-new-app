@@ -9,6 +9,27 @@ import { Link } from "react-router-dom";
 
 const FormItem = Form.Item;
 
+function getSomething() {
+  return "something";
+}
+
+async function testAsync() {
+  
+  return new Promise(resolve=>{
+     setTimeout(()=>resolve('Hello'),10000)
+  },reject=>{
+
+  })
+}
+
+async function test() {
+  const v1 = await getSomething();
+  const v2 = await testAsync();
+  console.log(v1, v2);
+}
+
+test();
+
 class Login extends PureComponent {
 
   constructor(props) {
@@ -17,6 +38,7 @@ class Login extends PureComponent {
     this.state = {
        object:{text:'123'}
     };
+
   };
   
   static contextTypes = {
@@ -110,7 +132,7 @@ class Login extends PureComponent {
         );
       }
 };
-
+console.log(Login.prototype)
 const mapStateToProps = (state,ownProps)=>{
 
   return {
