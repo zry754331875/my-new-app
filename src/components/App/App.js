@@ -159,7 +159,7 @@ class App extends PureComponent {
           </Breadcrumb>
           <Switch>
             <PrivateRoute path='/App/Main' component={Main} isPublic={true}></PrivateRoute>
-            <Route exact path="/App/EmailList/:folder" component={EmailList}/>
+            <Route exact path="/App/EmailList/:folder" component={EmailList} />
             <Route path="/App/Contact" component={Contact}/>
             <Route path='/App/EmailList/:folder/EmailInfo' component={EmailInfo}></Route>
           </Switch>

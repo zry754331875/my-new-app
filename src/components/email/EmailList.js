@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Table, Icon, Divider } from 'antd';
 import { getList,rowClick } from "../../Actions/EmailListActions";
 import { createAction } from "redux-actions";
-import {EMAIL_LIST_FETCH_START} from "../../Contants/EmailTypes";
+import * as EmailTypes from "../../Contants/EmailTypes";
 var FOLDER = ''
 
 const columns = [{
@@ -118,7 +118,7 @@ const mapStateToProps = (state,ownProps)=>{
 const mapDispatchToProps = (dispatch)=>{
   return {
     getList:(folder,pagination)=>{
-      dispatch(createAction('EMAIL_LIST_FETCH_START')({folder,pagination}))
+      dispatch(createAction(EmailTypes.EMAIL_LIST_FETCH_START)({folder,pagination}))
     },
     rowClick:(record,folder)=>{
       dispatch(rowClick(record,folder))
