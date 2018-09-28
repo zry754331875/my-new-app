@@ -1,4 +1,4 @@
-import { createHashHistory } from 'history'
+import { createHashHistory,createBrowserHistory } from 'history'
 import { applyMiddleware, compose, createStore } from 'redux'
 import { connectRouter, routerMiddleware } from 'connected-react-router'
 import { rootReducers } from "../Reducers/index";
@@ -6,7 +6,7 @@ import thunk from "redux-thunk";
 import createSagaMiddleware from "redux-saga";
 import rootSaga from "./saga";
 
-export const history = createHashHistory()
+export const history = createBrowserHistory()
 
 const sagaMiddleware = createSagaMiddleware()
 

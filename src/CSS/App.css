@@ -12,6 +12,13 @@
   margin: 7px 28px 16px -20px;
 }
 
+.header{
+  position: fixed;
+  z-index: 1000;
+  width: 100vw;
+  overflow: hidden;
+}
+
 .triangle_border_up{
   width:0;
   height:0;
