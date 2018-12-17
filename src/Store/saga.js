@@ -5,7 +5,8 @@ import {
   call,
   fork,
   race,
-  all
+  all,
+  select
 } from "redux-saga/effects";
 import * as EmailTypes from "../Contants/EmailTypes";
 import { createAction } from "redux-actions";
@@ -13,6 +14,7 @@ import { push } from "connected-react-router";
 
 export function* fetchEmailList(action) {
   try {
+  
     let { folder, pagination } = action.payload;
 
     let { pageSize, current } = pagination;
@@ -69,8 +71,8 @@ export default function *rootSaga(){
 }
 
 export function* fetchEmailListSaga() {
-  yield takeEvery(EmailTypes.EMAIL_LIST_FETCH_START, fetchEmailList);
   yield takeEvery(EmailTypes.EMAIL_LIST_ROW_CLICK, rowClick);
+  yield takeEvery(EmailTypes.EMAIL_LIST_FETCH_START, fetchEmailList);
 }
 
 export function* rowClick(action) {

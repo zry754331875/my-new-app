@@ -5,7 +5,7 @@ export default class Main extends PureComponent {
   render() {
     return (
       <div>
-        <div className='Main_Float'>首页组件</div>
+        
         
       </div>
     );
